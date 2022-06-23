@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Note</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body class="container p-5">
+<div class="container">
+
+    <div class="row">
+        <h2>Update Note</h2>
+    </div>
+
+    <div class="row">
+        <form th:action="@{/note/update/{id}(id=${noteBean.id})}" th:object="${noteBean}" method="post" class="form-horizontal" style="width: 100%">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">name</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{name}" id="name" placeholder="name" class="col-4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="content" class="col-sm-2 control-label">Content</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{content}" id="content" placeholder="Content" class="col-4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date" class="col-sm-2 control-label">date</label>
+                <div class="col-sm-10">
+                    <input type="date" th:field="*{date}" id="date" placeholder="date de la visite" class="col-4">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{patId}" th:value="${patId}" id="patId" placeholder="PatId" class="col-4">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <a class="btn btn-danger btn-sm" href="/">Cancel</a>
+                    <input class="btn btn-primary btn-sm" type="submit" value="Update note">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

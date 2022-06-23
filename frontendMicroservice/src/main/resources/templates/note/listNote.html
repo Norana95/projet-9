@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Historique du Patient</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+        </div>
+    </div>
+    <div class="row"><h2>Historique du patient</h2></div>
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>content</th>
+                <th>date</th>
+                <th>PatId</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <tr th:each="note : ${notes}">
+                <td style="width: 10%" th:text="${note.id}"></td>
+                <td th:text="${note.name}"></td>
+                <td th:text="${note.content}"></td>
+                <td th:text="${#dates.format(note.date, 'dd/MM/yyyy')}"></td>
+                <td th:text="${note.patId}"></td>
+                <td style="width: 15%" class="text-center">
+                    <a th:href="@{/note/update/{id}(id=${note.id})}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="addNote.html" th:href="@{/note/add/{patId}(patId=${patId})}" class="btn btn-primary btn-sm">Ajouter une note</a>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+</html>
