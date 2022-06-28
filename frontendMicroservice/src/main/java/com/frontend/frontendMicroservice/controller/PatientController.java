@@ -29,7 +29,7 @@ public class PatientController {
         return "patient/addPatient";
     }
 
-    @PostMapping("/patient/validate")
+    @PostMapping("/patient/add")
     public String createPatient(PatientBean patientBean) {
         patientProxy.createPatient(patientBean);
         return "redirect:/patients";

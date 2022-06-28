@@ -14,7 +14,7 @@ import java.util.Optional;
 @FeignClient(name = "microservice-assess", url = "http://localhost:8080")
 public interface AssessMicroserviceProxy {
 
-    @GetMapping("/patient/DiabetesReport/{id}")
+    @PostMapping("/patient/DiabetesReport/{id}")
     String addAndGetAssessByPatId(@PathVariable("id") Long patId);
 
 }

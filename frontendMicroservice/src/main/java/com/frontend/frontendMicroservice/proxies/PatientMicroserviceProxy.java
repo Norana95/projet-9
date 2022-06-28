@@ -10,7 +10,7 @@ import java.util.List;
 public interface PatientMicroserviceProxy {
 
     @PostMapping("/patient/add")
-    PatientBean createPatient(PatientBean newPatient);
+    void createPatient(PatientBean newPatient);
 
     @GetMapping("/patients")
     List<PatientBean> allPatients();
@@ -19,5 +19,5 @@ public interface PatientMicroserviceProxy {
     PatientBean getPatientbyId(@PathVariable("id") Long id);
 
     @PostMapping("/patient/update/{id}")
-    PatientBean replacePatient(PatientBean newPatient, @PathVariable("id") Long id);
+    void replacePatient(PatientBean newPatient, @PathVariable("id") Long id);
 }

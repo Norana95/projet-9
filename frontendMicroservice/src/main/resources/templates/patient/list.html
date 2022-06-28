@@ -37,8 +37,8 @@
                 <td th:text="${patient.address}"></td>
                 <td th:text="${patient.phone}"></td>
                 <td style="width: 15%" class="text-center">
-                    <a th:href="@{/patient/update/{id}(id=${patient.id})}">modifier</a>
-                    <a th:href="@{/patient/historique/{id}(id=${patient.id})}">historique du patient</a>
+                    <a th:href="@{/patient/update/{id}(id=${patient.id})}">modifier</a><br/>
+                    <a th:href="@{/patient/historique/{id}(id=${patient.id})}">historique du patient</a><br/>
                     <a th:href="@{/patient/DiabetesReport/{id}(id=${patient.id})}">rapport de diabete</a>
                 </td>
             </tr>

@@ -19,5 +19,5 @@ public interface NoteMicroserviceProxy {
     NoteBean getNoteById(@PathVariable("id") String id);
 
     @PostMapping("/note/update/{id}")
-    NoteBean noteUpdate(@RequestBody NoteBean note, @PathVariable("id") String id);
+    void noteUpdate(@RequestBody NoteBean note, @PathVariable("id") String id);
 }

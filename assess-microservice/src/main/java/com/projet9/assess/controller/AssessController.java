@@ -8,8 +8,11 @@ import com.projet9.assess.proxies.PatientMicroserviceProxy;
 import com.projet9.assess.repository.AssessRepository;
 import com.projet9.assess.service.AssessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -41,8 +44,8 @@ public class AssessController {
 
      }*/
 
-    @GetMapping("/patient/DiabetesReport/{id}")
-    public String addAndGetAssessByPatId(@PathVariable("id") Long patId){
+    @PostMapping("/patient/DiabetesReport/{patId}")
+    public ResponseEntity<String> addAndGetAssessByPatId(@PathVariable("patId") Long patId){
         PatientBean patient = patientProxy.getPatientbyId(patId);
         RiskLevels riskLevel = assessService.getRiskLevels(patId);
         int age = assessService.calculAge(patient.dob);
@@ -56,7 +59,12 @@ public class AssessController {
             Assess newAssess = new Assess(patId,riskLevel);
             assessRepository.save(newAssess);
         }
-        return "Patient : " + patient.family + " age(" + age +")" + " diabetes assessment is : " + riskLevel;
+        return ResponseEntity.status(HttpStatus.OK).body("Patient : " + patient.family + " age(" + age +")" + " diabetes assessment is : " + riskLevel);
+    }
+
+    @GetMapping("/assess")
+    public List<Assess> getListAssess(){
+        return assessRepository.findAll();
     }
 
 }

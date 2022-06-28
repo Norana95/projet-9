@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class noteMicroserviceApplicationTests {
+class NoteMicroserviceApplicationTests {
 
     @Autowired
     NoteRepository repository;
@@ -21,12 +21,11 @@ class noteMicroserviceApplicationTests {
     @Test
     void testCrudNote() {
 
-        Note note = new Note("testName", "Tests de laboratoire indiquant une microalbumine élevée", Calendar.getInstance().getTime(), 3L);
+        Note note = new Note("Tests de laboratoire indiquant une microalbumine élevée", 3L);
 
         // Save
         note = repository.save(note);
         assertNotNull(note.getId());
-        assertEquals("testName", note.getName());
 
         // Update
         note.setContent("x");

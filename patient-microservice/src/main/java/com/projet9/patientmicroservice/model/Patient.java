@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity //pour préparer l'objet patient au stockage
+@Table(name = "patient")
 public class Patient {
 
     @Id //pour indiquer que id est notre clé primaire

@@ -3,6 +3,8 @@ package com.openclassrooms.notemicroservice.controller;
 import com.openclassrooms.notemicroservice.model.Note;
 import com.openclassrooms.notemicroservice.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,22 +27,23 @@ public class NoteController {
     }
 
     @PostMapping("/note/update/{id}")
-    public Note noteUpdate(@RequestBody Note note, @PathVariable("id") String id) {
+    public ResponseEntity<String> noteUpdate(@RequestBody Note note, @PathVariable("id") String id) {
         return noteRepository.findById(id)
                 .map(oldNote -> {
                     oldNote.setContent(note.getContent());
-                    oldNote.setDate(note.getDate());
-                    oldNote.setName(note.getName());
-                    return noteRepository.save(oldNote);
+                    noteRepository.save(oldNote);
+                    return ResponseEntity.ok("la note a été modifié");
                 })
-                .orElseGet(() -> {
-                    note.setId(id);
-                    return noteRepository.save(note);
-                });
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("cette note n'existe pas"));
     }
 
-    @GetMapping("/patient/historique/{id}")
-    public List<Note> getNotesByPatId(@PathVariable("id") Long patId){
-      return noteRepository.findByPatId(patId);
+    @GetMapping("/patient/historique/{patId}")
+    public List<Note> getNotesByPatId(@PathVariable("patId") Long patId) {
+        return noteRepository.findByPatId(patId);
+    }
+
+    @GetMapping("/notes")
+    public List<Note> getNotesList() {
+        return noteRepository.findAll();
     }
 }
