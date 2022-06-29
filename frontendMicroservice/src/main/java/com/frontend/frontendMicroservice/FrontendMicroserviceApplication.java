@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableFeignClients("com.frontend") //Cela permet de rechercher des interfaces déclarées comme faux clients.
+@EnableFeignClients("com.frontend")
 @SpringBootApplication
 public class FrontendMicroserviceApplication {
 

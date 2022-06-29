@@ -21,3 +21,6 @@ public interface PatientMicroserviceProxy {
     @PostMapping("/patient/update/{id}")
     void replacePatient(PatientBean newPatient, @PathVariable("id") Long id);
 }
+
+
+

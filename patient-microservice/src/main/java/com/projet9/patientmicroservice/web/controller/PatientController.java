@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RestController //indique que les données renvoyées par chaque méthode seront
-// écrites directement dans le corps de la réponse au lieu d'afficher un modèle.
+@RestController
 public class PatientController {
 
     @Autowired
@@ -26,9 +25,7 @@ public class PatientController {
 
     @GetMapping("/patients")
     List<Patient> allPatients() {
-        List<Patient> patients = patientRepository.findAll();
-        patients.size();
-        return patients;
+        return patientRepository.findAll();
     }
 
     @GetMapping("/patients/{id}")

@@ -3,12 +3,12 @@ package com.projet9.patientmicroservice.model;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity //pour préparer l'objet patient au stockage
+@Entity
 @Table(name = "patient")
 public class Patient {
 
-    @Id //pour indiquer que id est notre clé primaire
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //le fournisseur jpa rempli automatiquement l'id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     public String family;
     public String given;

@@ -34,16 +34,6 @@ public class AssessController {
         this.patientProxy = patientProxy;
     }
 
-    /* @PostMapping("/assess/id")
-     public ResponseEntity<> postAssessId(@RequestBody Assess assess){
-
-     }
-
-     @PostMapping("/assess/familyName")
-     public ResponseEntity<> postAssessFamilyName(@RequestBody Assess assess){
-
-     }*/
-
     @PostMapping("/patient/DiabetesReport/{patId}")
     public ResponseEntity<String> addAndGetAssessByPatId(@PathVariable("patId") Long patId){
         PatientBean patient = patientProxy.getPatientbyId(patId);
